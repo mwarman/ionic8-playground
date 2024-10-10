@@ -10,6 +10,7 @@ import { useRef, useState } from 'react';
 import classNames from 'classnames';
 import { Form, Formik } from 'formik';
 import { boolean, object, string } from 'yup';
+import { useTranslation } from 'react-i18next';
 
 import './SignInForm.scss';
 import { BaseComponentProps } from 'common/components/types';
@@ -60,6 +61,7 @@ const SignInForm = ({ className, testid = 'form-signin' }: SignInFormProps): JSX
   const { setIsActive: setShowProgress } = useProgress();
   const router = useIonRouter();
   const { mutate: signIn } = useSignIn();
+  const { t } = useTranslation();
 
   // remember me details
   const rememberMe = storage.getJsonItem<RememberMe>(StorageKey.RememberMe);
@@ -72,7 +74,7 @@ const SignInForm = ({ className, testid = 'form-signin' }: SignInFormProps): JSX
     <div className={classNames('ls-signin-form', className)} data-testid={testid}>
       {error && (
         <ErrorCard
-          content={`We were unable verify your credentials. Please try again. ${error}`}
+          content={`${t('error.unable-to-verify', { ns: 'auth' })} ${error}`}
           className="ion-margin-bottom"
           testid={`${testid}-error`}
         />
@@ -113,13 +115,13 @@ const SignInForm = ({ className, testid = 'form-signin' }: SignInFormProps): JSX
         {({ dirty, isSubmitting }) => (
           <Form data-testid={`${testid}-form`}>
             <HeaderRow border>
-              <div>Sign In</div>
+              <div>{t('signin', { ns: 'auth' })}</div>
               <Icon id="signinInfo" icon={IconName.CircleInfo} color="secondary" />
             </HeaderRow>
 
             <Input
               name="username"
-              label="Username"
+              label={t('label.username', { ns: 'auth' })}
               labelPlacement="stacked"
               maxlength={30}
               autocomplete="off"
@@ -130,7 +132,7 @@ const SignInForm = ({ className, testid = 'form-signin' }: SignInFormProps): JSX
             <Input
               type="password"
               name="password"
-              label="Password"
+              label={t('label.password', { ns: 'auth' })}
               labelPlacement="stacked"
               maxlength={30}
               autocomplete="off"
@@ -145,7 +147,7 @@ const SignInForm = ({ className, testid = 'form-signin' }: SignInFormProps): JSX
               className="ls-signin-form__input ls-signin-form__input-checkbox"
               testid={`${testid}-field-rememberme`}
             >
-              Remember me
+              {t('label.remember-me', { ns: 'auth' })}
             </CheckboxInput>
 
             <IonButton
@@ -156,7 +158,7 @@ const SignInForm = ({ className, testid = 'form-signin' }: SignInFormProps): JSX
               disabled={isSubmitting || !dirty}
               data-testid={`${testid}-button-submit`}
             >
-              Sign In
+              {t('signin', { ns: 'auth' })}
             </IonButton>
 
             <IonPopover
@@ -166,18 +168,20 @@ const SignInForm = ({ className, testid = 'form-signin' }: SignInFormProps): JSX
             >
               <IonContent className="ion-padding">
                 <p>
-                  This example application uses{' '}
+                  {t('info-username.part1', { ns: 'auth' })}
                   <a
                     href="https://jsonplaceholder.typicode.com/users"
                     target="_blank"
                     rel="noreferrer"
                   >
-                    JSONPlaceholder data
+                    {t('info-username.part2', { ns: 'auth' })}
                   </a>
-                  . Try a username like <span className="inline-code">Bret</span> or{' '}
+                  . {t('info-username.part3', { ns: 'auth' })}{' '}
+                  <span className="inline-code">Bret</span>{' '}
+                  {t('info-username.part4', { ns: 'auth' })}{' '}
                   <span className="inline-code">Samantha</span>.
                 </p>
-                <p>You may use any value as the password.</p>
+                <p>{t('info-username.part5', { ns: 'auth' })}</p>
               </IonContent>
             </IonPopover>
           </Form>

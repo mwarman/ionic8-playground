@@ -1,0 +1,59 @@
+{
+  "about": "Sobre",
+  "diagnostics": {
+    "app": "App",
+    "build": "Build",
+    "diagnostics": "Diagnósticos",
+    "label": {
+      "build": "Compilación",
+      "environment": "Ambiente",
+      "id": "ID",
+      "name": "Nombre",
+      "native": "Nativo",
+      "platforms": "Plataformas",
+      "sha": "SHA",
+      "time": "Tiempo",
+      "version": "Versión",
+      "workflow": "Flujo de trabajo"
+    },
+    "platform": "Plataforma",
+    "platform-not-native": "Información disponible en dispositivos móviles."
+  },
+  "legal": "Legal",
+  "my-account": "Mi Cuenta",
+  "privacy-policy": "Política de privacidad",
+  "profile": {
+    "label": {
+      "bio": "Biografía",
+      "birthday": "Cumpleaños",
+      "email": "Correo electrónico",
+      "name": "Nombre"
+    },
+    "profile": "Perfil",
+    "unable-to-process": "Estamos experimentando problemas al procesar su solicitud.",
+    "unable-to-retrieve": "No podemos recuperar los detalles de su perfil en este momento."
+  },
+  "settings": {
+    "font-size": {
+      "default": "Valor predeterminado",
+      "larger": "Más grande",
+      "smaller": "Mas pequeño"
+    },
+    "label": {
+      "brightness": "Brillo",
+      "font-size": "Tamaño de fuente",
+      "language": "Idioma",
+      "notifications": "Notificaciones"
+    },
+    "language": {
+      "en": "Inglés",
+      "es": "Español",
+      "fr": "Francés"
+    },
+    "settings": "Configuraciónes",
+    "unable-to-update": "No se puede actualizar la configuración.",
+    "update-success": "Configuración actualizada."
+  },
+  "terms-and-conditions": "Términos y condiciones",
+  "version": "Versión"
+}

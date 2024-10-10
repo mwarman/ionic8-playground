@@ -11,6 +11,7 @@ import {
   useIonRouter,
 } from '@ionic/react';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import dayjs from 'dayjs';
 
 import { PropsWithTestId } from 'common/components/types';
@@ -30,6 +31,7 @@ const AccountPage = ({ testid = 'page-account' }: PropsWithTestId): JSX.Element 
   const [diagnosticsCount, setDiagnosticsCount] = useState<number>(0);
   const config = useConfig();
   const router = useIonRouter();
+  const { t } = useTranslation();
 
   const versionTs = dayjs(config.VITE_BUILD_TS).format('YY.MM.DD.hhmm');
   const sha = config.VITE_BUILD_COMMIT_SHA.substring(0, 7);
@@ -47,7 +49,7 @@ const AccountPage = ({ testid = 'page-account' }: PropsWithTestId): JSX.Element 
   return (
     <IonPage className="ls-account-page" data-testid={testid}>
       <ProgressProvider>
-        <Header title="My Account" />
+        <Header title={t('my-account', { ns: 'account' })} />
 
         <IonContent>
           <IonGrid fixed>
@@ -55,14 +57,18 @@ const AccountPage = ({ testid = 'page-account' }: PropsWithTestId): JSX.Element 
               <IonCol size="12" sizeLg="6" className="order-1-lg">
                 <List>
                   <IonListHeader>
-                    <IonLabel>Account</IonLabel>
+                    <IonLabel>{t('navigation.account')}</IonLabel>
                   </IonListHeader>
 
                   <IonItem className="text-sm" detail routerLink="/tabs/account/profile">
-                    <IonLabel className="font-medium ion-margin-end">Profile</IonLabel>
+                    <IonLabel className="font-medium ion-margin-end">
+                      {t('profile.profile', { ns: 'account' })}
+                    </IonLabel>
                   </IonItem>
                   <IonItem className="text-sm" detail routerLink="/auth/signout">
-                    <IonLabel className="font-medium ion-margin-end">Sign Out</IonLabel>
+                    <IonLabel className="font-medium ion-margin-end">
+                      {t('navigation.signout')}
+                    </IonLabel>
                   </IonItem>
                 </List>
               </IonCol>
@@ -74,14 +80,18 @@ const AccountPage = ({ testid = 'page-account' }: PropsWithTestId): JSX.Element 
               <IonCol size="12" sizeLg="6" className="order-2-lg">
                 <List>
                   <IonListHeader>
-                    <IonLabel>Legal</IonLabel>
+                    <IonLabel>{t('legal', { ns: 'account' })}</IonLabel>
                   </IonListHeader>
 
                   <IonItem className="text-sm">
-                    <IonLabel className="font-medium">Privacy policy</IonLabel>
+                    <IonLabel className="font-medium">
+                      {t('privacy-policy', { ns: 'account' })}
+                    </IonLabel>
                   </IonItem>
                   <IonItem className="text-sm">
-                    <IonLabel className="font-medium">Terms and conditions</IonLabel>
+                    <IonLabel className="font-medium">
+                      {t('terms-and-conditions', { ns: 'account' })}
+                    </IonLabel>
                   </IonItem>
                 </List>
               </IonCol>
@@ -89,11 +99,13 @@ const AccountPage = ({ testid = 'page-account' }: PropsWithTestId): JSX.Element 
               <IonCol size="12" sizeLg="6" className="order-4-lg">
                 <List>
                   <IonListHeader>
-                    <IonLabel>About</IonLabel>
+                    <IonLabel>{t('about', { ns: 'account' })}</IonLabel>
                   </IonListHeader>
 
                   <IonItem className="text-sm" onClick={() => onDiagnosticsClick()}>
-                    <IonLabel className="font-medium ion-margin-end">Version</IonLabel>
+                    <IonLabel className="font-medium ion-margin-end">
+                      {t('version', { ns: 'account' })}
+                    </IonLabel>
                     <IonText>{version}</IonText>
                   </IonItem>
                 </List>

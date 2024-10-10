@@ -1,0 +1,10 @@
+{
+  "welcome": {
+    "sentence1": "Welcome to the Ionic playground project.",
+    "sentence2": {
+      "1": "This project demonstrates how to create a cross-platform application using the",
+      "2": "framework and",
+      "3": "components"
+    }
+  }
+}

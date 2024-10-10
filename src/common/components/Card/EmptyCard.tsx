@@ -1,3 +1,5 @@
+import { useTranslation } from 'react-i18next';
+
 import MessageCard, { MessageCardProps } from './MessageCard';
 import { IconName } from '../Icon/Icon';
 
@@ -17,9 +19,12 @@ interface EmptyCardProps extends MessageCardProps {}
 const EmptyCard = ({
   icon = IconName.CircleInfo,
   testid = 'card-empty',
-  title = 'No data',
+  title,
   ...cardProps
 }: EmptyCardProps): JSX.Element => {
+  const { t } = useTranslation();
+  title ??= t('error-no-data');
+
   return <MessageCard icon={icon} testid={testid} title={title} {...cardProps} />;
 };
 

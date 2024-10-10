@@ -12,6 +12,7 @@ import {
 import { useState } from 'react';
 import { useQueryClient } from '@tanstack/react-query';
 import classNames from 'classnames';
+import { useTranslation } from 'react-i18next';
 
 import './UserListPage.scss';
 import { PropsWithTestId } from 'common/components/types';
@@ -35,6 +36,7 @@ import UserAddModal from '../UserAdd/UserAddModal';
 export const UserListPage = ({ testid = 'page-user-list' }: PropsWithTestId): JSX.Element => {
   const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
   const [search, setSearch] = useState<string>('');
+  const { t } = useTranslation();
   const queryClient = useQueryClient();
   const { handleIonScroll, scrollDirection } = useScrollContext();
 
@@ -59,7 +61,7 @@ export const UserListPage = ({ testid = 'page-user-list' }: PropsWithTestId): JS
     <IonPage className="ls-user-list-page" data-testid={testid}>
       <ProgressProvider>
         <Header
-          title="Users"
+          title={t('navigation.users')}
           toolbars={[
             {
               children: <Searchbar debounce={500} onIonInput={handleInputSearch} />,
@@ -77,11 +79,11 @@ export const UserListPage = ({ testid = 'page-user-list' }: PropsWithTestId): JS
 
           <Container fixed>
             <PageHeader border inset className="ion-margin-top ion-hide-md-down">
-              <IonText>Users</IonText>
+              <IonText>{t('navigation.users')}</IonText>
               <IonButtons>
                 <IonButton
                   shape="round"
-                  title="Add user"
+                  title={t('add-user', { ns: 'user' })}
                   onClick={() => setIsOpenModal(true)}
                   data-testid={`${testid}-page-header-button-create`}
                 >

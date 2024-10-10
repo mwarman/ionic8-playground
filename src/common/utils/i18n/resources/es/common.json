@@ -1,0 +1,31 @@
+{
+  "confirm-prompt": "Estas seguro?",
+  "created": "creado",
+  "deleted": "eliminado",
+  "error-no-data": "Sin datos",
+  "error-generic": "Un problema",
+  "ionic-playground": "Proyecto Ionic",
+  "label": {
+    "cancel": "Cancelar",
+    "delete": "Borrar",
+    "save": "Guardar"
+  },
+  "navigation": {
+    "account": "Cuenta",
+    "home": "Inicio",
+    "menu": "Menú",
+    "signout": "Desconecta",
+    "users": "Usuarios"
+  },
+  "validation": {
+    "email": "Debe ser una dirección de correo electrónico. ",
+    "max": "Debe tener como máximo {{max}} caracteres. ",
+    "min": "Debe tener al menos {{min}} caracteres. ",
+    "required": "Requerido. ",
+    "url": "Debe ser una URL. "
+  },
+  "no": "no",
+  "updated": "actualizado",
+  "welcome": "Bienvenido",
+  "yes": "sí"
+}

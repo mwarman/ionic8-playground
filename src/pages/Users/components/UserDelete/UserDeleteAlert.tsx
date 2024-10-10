@@ -1,6 +1,7 @@
 import { IonAlert } from '@ionic/react';
 import { ComponentPropsWithoutRef } from 'react';
 import classNames from 'classnames';
+import { useTranslation } from 'react-i18next';
 
 import './UserDeleteAlert.scss';
 import { BaseComponentProps } from 'common/components/types';
@@ -49,6 +50,7 @@ const UserDeleteAlert = ({
   user,
 }: UserDeleteAlertProps): JSX.Element => {
   const { isPending: isDeleting, mutate: deleteUser } = useDeleteUser();
+  const { t } = useTranslation();
 
   const doDeleteUser = () => {
     isPending?.(true);
@@ -81,7 +83,7 @@ const UserDeleteAlert = ({
             disabled: isDeleting,
             'data-testid': `${testid}-button-cancel`,
           },
-          text: 'Cancel',
+          text: t('label.cancel'),
         },
         {
           handler: () => {
@@ -89,13 +91,15 @@ const UserDeleteAlert = ({
             return false;
           },
           htmlAttributes: { disabled: isDeleting, 'data-testid': `${testid}-button-delete` },
-          text: 'Delete',
+          text: t('label.delete'),
         },
       ]}
-      header={isDeleting ? 'Deleting...' : 'Are you sure?'}
+      header={isDeleting ? t('delete.deleting', { ns: 'user' }) : t('confirm-prompt')}
       isOpen={isOpen}
       message={
-        isDeleting ? `Deleting ${user?.name} in progress.` : `Deleting ${user?.name} is permanent.`
+        isDeleting
+          ? t('delete.in-progress', { name: user?.name, ns: 'user' })
+          : t('delete.warning', { name: user?.name, ns: 'user' })
       }
     />
   );

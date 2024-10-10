@@ -1,4 +1,5 @@
 import classNames from 'classnames';
+import { useTranslation } from 'react-i18next';
 
 import { BaseComponentProps } from 'common/components/types';
 import { Company } from 'common/models/user';
@@ -40,6 +41,8 @@ const CompanyDetail = ({
   isLoading = false,
   testid = 'company-detail',
 }: CompanyDetailProps): JSX.Element | false => {
+  const { t } = useTranslation();
+
   if (isLoading) {
     // loading state
     return (
@@ -66,7 +69,7 @@ const CompanyDetail = ({
       <div className={classNames('ls-company-detail', className)} data-testid={testid}>
         <HeaderRow border>
           <Icon icon={IconName.Building} />
-          <div>Company</div>
+          <div>{t('company', { ns: 'user' })}</div>
         </HeaderRow>
         <div className="ls-company-detail__content">
           <div className="font-bold">{company.name}</div>

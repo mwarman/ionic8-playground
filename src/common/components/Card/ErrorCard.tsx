@@ -1,3 +1,5 @@
+import { useTranslation } from 'react-i18next';
+
 import MessageCard, { MessageCardProps } from './MessageCard';
 import { IconName } from '../Icon/Icon';
 
@@ -17,9 +19,12 @@ const ErrorCard = ({
   color = 'danger',
   icon = IconName.TriangleExclamation,
   testid = 'card-error',
-  title = 'Uh oh',
+  title,
   ...cardProps
 }: ErrorCardProps): JSX.Element => {
+  const { t } = useTranslation();
+  title ??= t('error-generic');
+
   return <MessageCard color={color} icon={icon} testid={testid} title={title} {...cardProps} />;
 };
 

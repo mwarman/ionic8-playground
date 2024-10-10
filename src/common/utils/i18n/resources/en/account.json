@@ -1,0 +1,59 @@
+{
+  "about": "About",
+  "diagnostics": {
+    "app": "App",
+    "build": "Build",
+    "diagnostics": "Diagnostics",
+    "label": {
+      "build": "Build",
+      "environment": "Environment",
+      "id": "ID",
+      "name": "Name",
+      "native": "Native",
+      "platforms": "Platforms",
+      "sha": "SHA",
+      "time": "Time",
+      "version": "Version",
+      "workflow": "Workflow"
+    },
+    "platform": "Platform",
+    "platform-not-native": "Information available on mobile devices."
+  },
+  "legal": "Legal",
+  "my-account": "My Account",
+  "privacy-policy": "Privacy policy",
+  "profile": {
+    "label": {
+      "bio": "Bio",
+      "birthday": "Birthday",
+      "email": "Email",
+      "name": "Name"
+    },
+    "profile": "Profile",
+    "unable-to-process": "We are experiencing problems processing your request.",
+    "unable-to-retrieve": "We are unable to retrieve your profile details at this time."
+  },
+  "settings": {
+    "font-size": {
+      "default": "Default",
+      "larger": "Larger",
+      "smaller": "Smaller"
+    },
+    "label": {
+      "brightness": "Brightness",
+      "font-size": "Font Size",
+      "language": "Language",
+      "notifications": "Notifications"
+    },
+    "language": {
+      "en": "English",
+      "es": "Spanish",
+      "fr": "French"
+    },
+    "settings": "Settings",
+    "unable-to-update": "Unable to update settings.",
+    "update-success": "Settings updated."
+  },
+  "terms-and-conditions": "Terms and conditions",
+  "version": "Version"
+}

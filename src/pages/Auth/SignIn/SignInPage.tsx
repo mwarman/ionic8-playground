@@ -1,4 +1,5 @@
 import { IonContent, IonPage } from '@ionic/react';
+import { useTranslation } from 'react-i18next';
 
 import './SignInPage.scss';
 import { PropsWithTestId } from 'common/components/types';
@@ -18,10 +19,12 @@ interface SignInPageProps extends PropsWithTestId {}
  * @returns {JSX.Element} JSX
  */
 const SignInPage = ({ testid = 'page-signin' }: SignInPageProps): JSX.Element => {
+  const { t } = useTranslation();
+
   return (
     <IonPage className="ls-signin-page" data-testid={testid}>
       <ProgressProvider>
-        <Header title="Ionic Playground" />
+        <Header title={t('ionic-playground')} />
 
         <IonContent fullscreen className="ion-padding">
           <Container className="ls-signin-page__container" fixed>

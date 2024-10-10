@@ -3,6 +3,7 @@ import { IonButton } from '@ionic/react';
 import { Form, Formik, FormikHelpers } from 'formik';
 import { object, string } from 'yup';
 import classNames from 'classnames';
+import { useTranslation } from 'react-i18next';
 
 import './UserForm.scss';
 import { BaseComponentProps } from 'common/components/types';
@@ -26,20 +27,6 @@ interface UserFormProps extends BaseComponentProps {
 }
 
 /**
- * User form validation schema.
- */
-const validationSchema = object<UserFormValues>({
-  name: string().required('Required. '),
-  username: string()
-    .required('Required. ')
-    .min(8, 'Must be at least 8 characters. ')
-    .max(30, 'Must be at most 30 characters. '),
-  email: string().required('Required. ').email('Must be an email address. '),
-  phone: string().required('Required. '),
-  website: string().url('Must be a URL. '),
-});
-
-/**
  * The `UserForm` component renders a Formik form for creating or editing
  * a `User`.
  * @param {UserFormProps} props - Component properties.
@@ -52,10 +39,25 @@ const UserForm = ({
   testid = 'form-user',
 }: UserFormProps): JSX.Element => {
   const focusInput = useRef<HTMLIonInputElement>(null);
+  const { t } = useTranslation();
 
   useEffect(() => {
     focusInput.current?.setFocus();
   }, []);
+
+  /**
+   * User form validation schema.
+   */
+  const validationSchema = object<UserFormValues>({
+    name: string().required(t('validation.required')),
+    username: string()
+      .required(t('validation.required'))
+      .min(8, ({ min }) => t('validation.min', { min }))
+      .max(30, ({ max }) => t('validation.max', { max })),
+    email: string().required(t('validation.required')).email(t('validation.email')),
+    phone: string().required(t('validation.required')),
+    website: string().url(t('validation.url')),
+  });
 
   return (
     <div className={classNames('ls-user-form', className)} data-testid={testid}>
@@ -75,7 +77,7 @@ const UserForm = ({
           <Form data-testid={`${testid}-form`}>
             <Input
               name="name"
-              label="Name"
+              label={t('label.name', { ns: 'user' })}
               labelPlacement="stacked"
               disabled={isSubmitting}
               className="ls-user-form__input"
@@ -84,7 +86,7 @@ const UserForm = ({
             ></Input>
             <Input
               name="username"
-              label="Username"
+              label={t('label.username', { ns: 'user' })}
               labelPlacement="stacked"
               disabled={isSubmitting}
               maxlength={30}
@@ -94,7 +96,7 @@ const UserForm = ({
             <Input
               name="email"
               type="email"
-              label="Email"
+              label={t('label.email', { ns: 'user' })}
               labelPlacement="stacked"
               disabled={isSubmitting}
               className="ls-user-form__input"
@@ -102,7 +104,7 @@ const UserForm = ({
             ></Input>
             <Input
               name="phone"
-              label="Phone"
+              label={t('label.phone', { ns: 'user' })}
               labelPlacement="stacked"
               disabled={isSubmitting}
               className="ls-user-form__input"
@@ -110,7 +112,7 @@ const UserForm = ({
             ></Input>
             <Input
               name="website"
-              label="Website"
+              label={t('label.website', { ns: 'user' })}
               labelPlacement="stacked"
               disabled={isSubmitting}
               className="ls-user-form__input"
@@ -125,7 +127,7 @@ const UserForm = ({
               disabled={isSubmitting || !dirty}
               data-testid={`${testid}-button-submit`}
             >
-              Save
+              {t('label.save')}
             </IonButton>
           </Form>
         )}

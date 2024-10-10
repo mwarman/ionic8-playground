@@ -1,0 +1,26 @@
+{
+  "address": "Dirección",
+  "add-user": "Agregar usuario",
+  "browse-and-search": "Explora y busca entre todos los usuarios. Ve los perfiles de los usuarios y lee sus publicaciones.",
+  "company": "Compañía",
+  "contact": "Contacto",
+  "delete": {
+    "deleting": "Borrando...",
+    "in-progress": "Eliminando {{name}} en proceso.",
+    "warning": "Eliminar {{name}} es permanente."
+  },
+  "delete-user": "Eliminar usuario",
+  "edit-user": "Editar usuario",
+  "label": {
+    "email": "Dirección de correo electrónico",
+    "name": "Nombre",
+    "phone": "Número de teléfono",
+    "username": "Nombre de usuario",
+    "website": "Sitio web"
+  },
+  "loading-users": "Cargando usuarios",
+  "tap-to-view": "Toque para ver todos los usuarios.",
+  "unable-to-find": "No podemos encontrar información que coincida con su solicitud.",
+  "unable-to-process": "Estamos experimentando problemas al procesar su solicitud.",
+  "unable-to-retrieve": "No podemos recuperar la información solicitada en este momento."
+}

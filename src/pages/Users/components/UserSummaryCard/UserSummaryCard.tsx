@@ -7,6 +7,7 @@ import {
   IonCardTitle,
 } from '@ionic/react';
 import classNames from 'classnames';
+import { useTranslation } from 'react-i18next';
 
 import './UserSummaryCard.scss';
 import { useGetUsers } from 'pages/Users/api/useGetUsers';
@@ -30,6 +31,7 @@ const UserSummaryCard = ({
   testid = 'card-user-summary',
 }: UserSummaryCardProps): JSX.Element => {
   const { data: users } = useGetUsers();
+  const { t } = useTranslation();
 
   return (
     <IonCard
@@ -40,18 +42,16 @@ const UserSummaryCard = ({
     >
       <IonCardHeader>
         <IonCardTitle className="ion-text-uppercase">
-          Users
+          {t('navigation.users')}
           {users && (
             <IonBadge className="ls-user-summary-card__badge" data-testid={`${testid}-badge`}>
               {users.length}
             </IonBadge>
           )}
         </IonCardTitle>
-        <IonCardSubtitle>Tap to view all users.</IonCardSubtitle>
+        <IonCardSubtitle>{t('tap-to-view', { ns: 'user' })}</IonCardSubtitle>
       </IonCardHeader>
-      <IonCardContent>
-        Browse and search all the users. View user profiles and read their posts.
-      </IonCardContent>
+      <IonCardContent>{t('browse-and-search', { ns: 'user' })}</IonCardContent>
     </IonCard>
   );
 };

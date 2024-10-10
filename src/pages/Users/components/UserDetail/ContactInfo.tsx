@@ -1,4 +1,5 @@
 import classNames from 'classnames';
+import { useTranslation } from 'react-i18next';
 
 import './ContactInfo.scss';
 import { BaseComponentProps } from 'common/components/types';
@@ -44,6 +45,8 @@ const ContactInfo = ({
   testid = 'contact-info',
   user,
 }: ContactInfoProps): JSX.Element | false => {
+  const { t } = useTranslation();
+
   if (isLoading) {
     // loading state
     return (
@@ -73,7 +76,7 @@ const ContactInfo = ({
         {showHeader && (
           <HeaderRow border>
             <Icon icon={IconName.User} />
-            <div>Contact Info</div>
+            <div>{t('contact', { ns: 'user' })}</div>
           </HeaderRow>
         )}
         <div className="ls-contact-info__content">

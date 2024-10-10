@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { IonCol, IonGrid, IonRow, useIonRouter } from '@ionic/react';
 import classNames from 'classnames';
+import { useTranslation } from 'react-i18next';
 
 import { BaseComponentProps } from 'common/components/types';
 import { User } from 'common/models/user';
@@ -25,6 +26,7 @@ interface UserEditProps extends BaseComponentProps {
  * @returns {JSX.Element} JSX
  */
 const UserEdit = ({ className, user, testid = 'user-edit' }: UserEditProps): JSX.Element => {
+  const { t } = useTranslation();
   const router = useIonRouter();
   const [error, setError] = useState<string>('');
   const { mutate: updateUser } = useUpdateUser();
@@ -38,7 +40,7 @@ const UserEdit = ({ className, user, testid = 'user-edit' }: UserEditProps): JSX
           <IonCol size="12" sizeMd="10" sizeLg="8" sizeXl="6">
             {error && (
               <ErrorCard
-                content={`We are experiencing problems processing your request. ${error}`}
+                content={`${t('unable-to-process', { ns: 'user' })} ${error}`}
                 className="ion-margin-bottom"
                 testid={`${testid}-error`}
               />
@@ -58,7 +60,7 @@ const UserEdit = ({ className, user, testid = 'user-edit' }: UserEditProps): JSX
                       createToast({
                         buttons: [DismissButton],
                         duration: 5000,
-                        message: `${user.name} updated`,
+                        message: `${user.name} ${t('updated')}`,
                       });
                       if (router.canGoBack()) {
                         router.goBack();

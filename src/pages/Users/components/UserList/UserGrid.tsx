@@ -1,6 +1,7 @@
 import { IonCol, IonGrid, IonRow } from '@ionic/react';
 import classNames from 'classnames';
 import isEmpty from 'lodash/isEmpty';
+import { useTranslation } from 'react-i18next';
 
 import './UserGrid.scss';
 import { BaseComponentProps } from 'common/components/types';
@@ -29,6 +30,7 @@ interface UserGridProps extends BaseComponentProps {
  * @see {@link IonGrid}
  */
 const UserGrid = ({ className, filterBy, testid = 'grid-user' }: UserGridProps): JSX.Element => {
+  const { t } = useTranslation();
   const { data: users, isError, isLoading } = useGetUsers();
 
   const baseProps = {
@@ -43,7 +45,7 @@ const UserGrid = ({ className, filterBy, testid = 'grid-user' }: UserGridProps):
         <LoaderSpinner
           className="ls-user-grid__loader"
           testid={`${testid}-loader`}
-          text="Loading users..."
+          text={`${t('loading-users', { ns: 'user' })}...`}
         />
       </div>
     );
@@ -54,7 +56,7 @@ const UserGrid = ({ className, filterBy, testid = 'grid-user' }: UserGridProps):
     return (
       <div {...baseProps}>
         <CardRow className="ls-user-grid__card-row" testid={`${testid}-error`}>
-          <ErrorCard content="We are experiencing problems getting the users." />
+          <ErrorCard content={t('unable-to-retrieve', { ns: 'user' })} />
         </CardRow>
       </div>
     );
@@ -67,7 +69,7 @@ const UserGrid = ({ className, filterBy, testid = 'grid-user' }: UserGridProps):
     return (
       <div {...baseProps}>
         <CardRow className="ls-user-grid__card-row" testid={`${testid}-empty`}>
-          <EmptyCard content="No users found." />
+          <EmptyCard content={t('unable-to-find', { ns: 'user' })} />
         </CardRow>
       </div>
     );

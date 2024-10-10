@@ -9,6 +9,7 @@ import {
   RefresherEventDetail,
 } from '@ionic/react';
 import { useQueryClient } from '@tanstack/react-query';
+import { useTranslation } from 'react-i18next';
 
 import { QueryKey } from 'common/utils/constants';
 import Header from 'common/components/Header/Header';
@@ -22,6 +23,7 @@ import WelcomeBlock from './components/WelcomeBlock/WelcomeBlock';
  */
 const HomePage = (): JSX.Element => {
   const queryClient = useQueryClient();
+  const { t } = useTranslation();
 
   const handleRefresh = async (event: CustomEvent<RefresherEventDetail>) => {
     await queryClient.refetchQueries({ queryKey: [QueryKey.Users], exact: true });
@@ -30,7 +32,7 @@ const HomePage = (): JSX.Element => {
 
   return (
     <IonPage data-testid="page-home">
-      <Header title="Ionic Playground" />
+      <Header title={t('ionic-playground')} />
 
       <IonContent fullscreen>
         <IonRefresher slot="fixed" onIonRefresh={handleRefresh}>

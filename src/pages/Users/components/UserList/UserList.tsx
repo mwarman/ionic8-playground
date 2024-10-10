@@ -1,6 +1,7 @@
 import { IonList, IonListHeader } from '@ionic/react';
 import classNames from 'classnames';
 import isEmpty from 'lodash/isEmpty';
+import { useTranslation } from 'react-i18next';
 
 import './UserList.scss';
 import { BaseComponentProps } from 'common/components/types';
@@ -22,7 +23,6 @@ import EmptyCard from 'common/components/Card/EmptyCard';
 interface UserListProps extends BaseComponentProps {
   filterBy?: string;
   header?: string;
-  showHeader?: boolean;
 }
 
 /**
@@ -34,10 +34,10 @@ interface UserListProps extends BaseComponentProps {
 const UserList = ({
   className,
   filterBy,
-  header = 'Users',
-  showHeader = false,
+  header,
   testid = 'list-user',
 }: UserListProps): JSX.Element => {
+  const { t } = useTranslation();
   const { data: users, isError, isLoading } = useGetUsers();
 
   const baseProps = {
@@ -52,7 +52,7 @@ const UserList = ({
         <LoaderSpinner
           className="ls-user-list__loader"
           testid={`${testid}-loader`}
-          text="Loading users..."
+          text={`${t('loading-users', { ns: 'user' })}...`}
         />
       </div>
     );
@@ -63,7 +63,7 @@ const UserList = ({
     return (
       <div {...baseProps}>
         <CardRow className="ls-user-list__card-row" testid={`${testid}-error`}>
-          <ErrorCard content="We are experiencing problems getting the users." />
+          <ErrorCard content={t('unable-to-retrieve', { ns: 'user' })} />
         </CardRow>
       </div>
     );
@@ -76,7 +76,7 @@ const UserList = ({
     return (
       <div {...baseProps}>
         <CardRow className="ls-user-list__card-row" testid={`${testid}-empty`}>
-          <EmptyCard content="No users found." />
+          <EmptyCard content={t('unable-to-find', { ns: 'user' })} />
         </CardRow>
       </div>
     );
@@ -85,7 +85,7 @@ const UserList = ({
   // Success state
   return (
     <IonList {...baseProps}>
-      {showHeader && <IonListHeader data-testid={`${testid}-header`}>{header}</IonListHeader>}
+      {header && <IonListHeader data-testid={`${testid}-header`}>{header}</IonListHeader>}
 
       {filteredUsers &&
         filteredUsers.map((user, index) => (

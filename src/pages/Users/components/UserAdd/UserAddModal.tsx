@@ -12,6 +12,7 @@ import {
   useIonRouter,
 } from '@ionic/react';
 import { ComponentPropsWithoutRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import { PropsWithTestId } from 'common/components/types';
 import { useCreateUser } from 'pages/Users/api/useCreateUser';
@@ -51,6 +52,7 @@ const UserAddModal = ({
   const { isActive: isActiveProgressBar, progressBar, setProgress } = useProgress();
   const { createToast } = useToasts();
   const { mutate: createUser } = useCreateUser();
+  const { t } = useTranslation();
 
   const didDismiss = (e: IonModalCustomEvent<OverlayEventDetail>) => {
     onIonModalDidDismiss?.(e);
@@ -61,7 +63,7 @@ const UserAddModal = ({
     <IonModal onIonModalDidDismiss={didDismiss} {...modalProps} data-testid={testid}>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>Add User</IonTitle>
+          <IonTitle>{t('add-user', { ns: 'user' })}</IonTitle>
 
           <IonButtons slot="end">
             <IonButton onClick={() => setIsOpen(false)} data-testid={`${testid}-button-close`}>
@@ -75,7 +77,7 @@ const UserAddModal = ({
       <IonContent className="ion-padding">
         {error && (
           <ErrorCard
-            content={`We are experiencing problems processing your request. ${error}`}
+            content={`${t('unable-to-process', { ns: 'user' })} ${error}`}
             className="ion-margin-bottom"
             testid={`${testid}-error`}
           />
@@ -93,7 +95,7 @@ const UserAddModal = ({
                   createToast({
                     buttons: [DismissButton],
                     duration: 5000,
-                    message: `${user.name} created`,
+                    message: `${user.name} ${t('created')}`,
                   });
                   setIsOpen(false);
                   router.push(`/tabs/users/${user.id}`);

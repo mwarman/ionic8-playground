@@ -1,3 +1,5 @@
+import { useTranslation } from 'react-i18next';
+
 import Block from 'common/components/Block/Block';
 import { BaseComponentProps } from 'common/components/types';
 
@@ -14,23 +16,24 @@ interface WelcomeBlockProps extends BaseComponentProps {}
  * @returns JSX
  */
 const WelcomeBlock = ({ className, testid = 'block-welcome' }: WelcomeBlockProps): JSX.Element => {
+  const { t } = useTranslation();
+
   return (
     <Block
       className={className}
-      title="Welcome"
+      title={t('welcome')}
       testid={testid}
       content={
         <div>
-          Welcome to the Ionic playground project. This project demonstrates how to create a
-          cross-platform application using the{' '}
+          {t('welcome.sentence1', { ns: 'home' })} {t('welcome.sentence2.1', { ns: 'home' })}{' '}
           <a href="https://ionic.io/" target="_blank" rel="noreferrer">
             Ionic
           </a>{' '}
-          framework and{' '}
+          {t('welcome.sentence2.2', { ns: 'home' })}{' '}
           <a href="https://react.dev" target="_blank" rel="noreferrer">
             React
           </a>{' '}
-          components.
+          {t('welcome.sentence2.3', { ns: 'home' })}.
         </div>
       }
     />

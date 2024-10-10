@@ -5,6 +5,7 @@ import { BaseComponentProps } from 'common/components/types';
 import { usePlatform } from 'common/hooks/usePlatform';
 import List from 'common/components/List/List';
 import Badges from 'common/components/Badge/Badges';
+import { useTranslation } from 'react-i18next';
 
 /**
  * The `PlatformDiagnostics` component displays application diagnostic information
@@ -19,24 +20,31 @@ const PlatformDiagnostics = ({
   testid = 'diagnostics-platform',
 }: BaseComponentProps): JSX.Element => {
   const { isNativePlatform, platforms } = usePlatform();
+  const { t } = useTranslation();
 
   return (
     <List className={classNames('ls-platform-diagnostics', className)} data-testid={testid}>
       <IonListHeader lines="full">
-        <IonLabel>Platform</IonLabel>
+        <IonLabel>{t('diagnostics.platform', { ns: 'account' })}</IonLabel>
       </IonListHeader>
       <IonItem className="text-sm">
-        <IonLabel className="font-medium ion-margin-end">Native</IonLabel>
+        <IonLabel className="font-medium ion-margin-end">
+          {t('diagnostics.label.native', { ns: 'account' })}
+        </IonLabel>
         {isNativePlatform ? (
-          <IonBadge data-testid={`${testid}-is-native`}>YES</IonBadge>
+          <IonBadge className="uppercase" data-testid={`${testid}-is-native`}>
+            {t('yes')}
+          </IonBadge>
         ) : (
-          <IonBadge color="medium" data-testid={`${testid}-not-native`}>
-            NO
+          <IonBadge className="uppercase" color="medium" data-testid={`${testid}-not-native`}>
+            {t('no')}
           </IonBadge>
         )}
       </IonItem>
       <IonItem className="text-sm">
-        <IonLabel className="font-medium ion-margin-end">Platforms</IonLabel>
+        <IonLabel className="font-medium ion-margin-end">
+          {t('diagnostics.label.platforms', { ns: 'account' })}
+        </IonLabel>
         <Badges data-testid={`${testid}-platforms`}>
           {platforms.map((platform) => (
             <IonBadge key={platform} color="medium" data-testid={`${testid}-platform`}>

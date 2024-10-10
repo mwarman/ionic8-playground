@@ -1,4 +1,5 @@
 import { IonCol, IonContent, IonGrid, IonPage, IonRow } from '@ionic/react';
+import { useTranslation } from 'react-i18next';
 
 import { PropsWithTestId } from 'common/components/types';
 import { useGetProfile } from 'pages/Account/api/useGetProfile';
@@ -20,11 +21,16 @@ import CardRow from 'common/components/Card/CardRow';
  */
 const ProfilePage = ({ testid = 'page-profile' }: PropsWithTestId): JSX.Element => {
   const { data: profile, isError, isLoading } = useGetProfile();
+  const { t } = useTranslation();
 
   return (
     <IonPage className="ls-profile-page" data-testid={testid}>
       <ProgressProvider>
-        <Header backButton defaultHref="/tabs/account" title="Profile" />
+        <Header
+          backButton
+          defaultHref="/tabs/account"
+          title={t('profile.profile', { ns: 'account' })}
+        />
 
         <IonContent className="ion-padding">
           <Container fixed>
@@ -38,7 +44,7 @@ const ProfilePage = ({ testid = 'page-profile' }: PropsWithTestId): JSX.Element 
             {isError && (
               <CardRow>
                 <ErrorCard
-                  content={`We are unable to retrieve your profile details at this time.`}
+                  content={t('profile.unable-to-retrieve', { ns: 'account' })}
                   className="ion-margin-bottom"
                   testid={`${testid}-error`}
                 />
@@ -48,7 +54,7 @@ const ProfilePage = ({ testid = 'page-profile' }: PropsWithTestId): JSX.Element 
             {profile && (
               <>
                 <PageHeader border inset>
-                  <div>Profile</div>
+                  <div>{t('profile.profile', { ns: 'account' })}</div>
                 </PageHeader>
 
                 <IonGrid>

@@ -1,5 +1,6 @@
 import { IonItem, IonLabel, IonListHeader } from '@ionic/react';
 import classNames from 'classnames';
+import { useTranslation } from 'react-i18next';
 
 import { BaseComponentProps } from 'common/components/types';
 import { usePlatform } from 'common/hooks/usePlatform';
@@ -21,12 +22,13 @@ const AppDiagnostics = ({
 }: BaseComponentProps): JSX.Element => {
   const { isNativePlatform } = usePlatform();
   const { data: appInfo, isLoading } = useGetAppInfo();
+  const { t } = useTranslation();
 
   if (isNativePlatform) {
     return (
       <List className={classNames('ls-app-diagnostics', className)} data-testid={testid}>
         <IonListHeader lines="full">
-          <IonLabel>App</IonLabel>
+          <IonLabel>{t('diagnostics.app', { ns: 'account' })}</IonLabel>
         </IonListHeader>
         {isLoading && (
           <IonItem data-testid={`${testid}-loading`}>
@@ -36,25 +38,33 @@ const AppDiagnostics = ({
         {appInfo && (
           <>
             <IonItem className="text-sm">
-              <IonLabel className="font-medium ion-margin-end">Name</IonLabel>
+              <IonLabel className="font-medium ion-margin-end">
+                {t('diagnostics.label.name', { ns: 'account' })}
+              </IonLabel>
               <IonLabel className="ion-text-end" data-testid={`${testid}-name`}>
                 {appInfo.name}
               </IonLabel>
             </IonItem>
             <IonItem className="text-sm">
-              <IonLabel className="font-medium ion-margin-end">ID</IonLabel>
+              <IonLabel className="font-medium ion-margin-end">
+                {t('diagnostics.label.id', { ns: 'account' })}
+              </IonLabel>
               <IonLabel className="ion-text-end" data-testid={`${testid}-id`}>
                 {appInfo.id}
               </IonLabel>
             </IonItem>
             <IonItem className="text-sm">
-              <IonLabel className="font-medium ion-margin-end">Build</IonLabel>
+              <IonLabel className="font-medium ion-margin-end">
+                {t('diagnostics.label.build', { ns: 'account' })}
+              </IonLabel>
               <IonLabel className="ion-text-end" data-testid={`${testid}-build`}>
                 {appInfo.build}
               </IonLabel>
             </IonItem>
             <IonItem className="text-sm">
-              <IonLabel className="font-medium ion-margin-end">Version</IonLabel>
+              <IonLabel className="font-medium ion-margin-end">
+                {t('diagnostics.label.version', { ns: 'account' })}
+              </IonLabel>
               <IonLabel className="ion-text-end" data-testid={`${testid}-version`}>
                 {appInfo.version}
               </IonLabel>
@@ -67,11 +77,11 @@ const AppDiagnostics = ({
     return (
       <List className={classNames('ls-app-diagnostics', className)} data-testid={testid}>
         <IonListHeader lines="full">
-          <IonLabel>App</IonLabel>
+          <IonLabel>{t('diagnostics.app', { ns: 'account' })}</IonLabel>
         </IonListHeader>
         <IonItem className="text-sm">
           <IonLabel color="medium" className="font-medium" data-testid={`${testid}-not-native`}>
-            Information available on mobile devices.
+            {t('diagnostics.platform-not-native', { ns: 'account' })}
           </IonLabel>
         </IonItem>
       </List>

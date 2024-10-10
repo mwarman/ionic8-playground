@@ -1,6 +1,7 @@
 import { IonButton, IonButtons, IonContent, IonPage, IonText, useIonRouter } from '@ionic/react';
 import { useState } from 'react';
 import { useParams } from 'react-router';
+import { useTranslation } from 'react-i18next';
 
 import { PropsWithTestId } from 'common/components/types';
 import { useGetUser } from 'pages/Users/api/useGetUser';
@@ -37,6 +38,7 @@ interface UserDetailPageRouteParams {
 export const UserDetailPage = ({
   testid = 'page-user-detail',
 }: UserDetailPageProps): JSX.Element => {
+  const { t } = useTranslation();
   const router = useIonRouter();
   const { createToast } = useToasts();
   const [showConfirmDelete, setShowConfirmDelete] = useState<boolean>(false);
@@ -54,7 +56,7 @@ export const UserDetailPage = ({
                 user && (
                   <>
                     <IonButton
-                      title="Edit user"
+                      title={t('edit-user', { ns: 'user' })}
                       shape="round"
                       className="ion-hide-md-up"
                       routerLink={`/tabs/users/${userId}/edit`}
@@ -63,7 +65,7 @@ export const UserDetailPage = ({
                       <Icon icon={IconName.PenToSquare} size="xl" />
                     </IonButton>
                     <IonButton
-                      title="Delete user"
+                      title={t('delete-user', { ns: 'user' })}
                       shape="round"
                       className="ion-hide-md-up"
                       onClick={() => setShowConfirmDelete(true)}
@@ -86,7 +88,7 @@ export const UserDetailPage = ({
                     <IonText data-testid={`${testid}-page-header-title`}>{user.name}</IonText>
                     <IonButtons>
                       <IonButton
-                        title="Edit user"
+                        title={t('edit-user', { ns: 'user' })}
                         shape="round"
                         routerLink={`/tabs/users/${userId}/edit`}
                         data-testid={`${testid}-page-header-button-edit`}
@@ -94,7 +96,7 @@ export const UserDetailPage = ({
                         <Icon icon={IconName.PenToSquare} size="xl" />
                       </IonButton>
                       <IonButton
-                        title="Delete user"
+                        title={t('delete-user', { ns: 'user' })}
                         shape="round"
                         onClick={() => setShowConfirmDelete(true)}
                         data-testid={`${testid}-page-header-button-delete`}
@@ -129,7 +131,7 @@ export const UserDetailPage = ({
                       createToast({
                         buttons: [DismissButton],
                         duration: 5000,
-                        message: `${user?.name} deleted`,
+                        message: `${user?.name} ${t('deleted')}`,
                       });
                       router.goBack();
                     }}

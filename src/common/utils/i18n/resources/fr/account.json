@@ -1,0 +1,59 @@
+{
+  "about": "À propos",
+  "diagnostics": {
+    "app": "App",
+    "build": "Construire",
+    "diagnostics": "Diagnostics",
+    "label": {
+      "build": "Compilation",
+      "environment": "Environnement",
+      "id": "ID",
+      "name": "Nom",
+      "native": "Natal",
+      "platforms": "Plateformes",
+      "sha": "SHA",
+      "time": "Temps",
+      "version": "Version",
+      "workflow": "Flux de travail"
+    },
+    "platform": "Plate-forme",
+    "platform-not-native": "Informations disponibles sur les appareils mobiles."
+  },
+  "legal": "Légal",
+  "my-account": "Mon Compte",
+  "privacy-policy": "Politique de confidentialité",
+  "profile": {
+    "label": {
+      "bio": "Biographie",
+      "birthday": "Anniversaire",
+      "email": "E-mail",
+      "name": "Nom"
+    },
+    "profile": "Profil",
+    "unable-to-process": "Nous rencontrons des problèmes lors du traitement de votre demande.",
+    "unable-to-retrieve": "Nous ne sommes pas en mesure de récupérer les détails de votre profil pour le moment."
+  },
+  "settings": {
+    "font-size": {
+      "default": "Valeur par défaut",
+      "larger": "Plus grand",
+      "smaller": "Plus petit"
+    },
+    "label": {
+      "brightness": "Luminosité",
+      "font-size": "Taille de la police",
+      "language": "Langue",
+      "notifications": "Notifications"
+    },
+    "language": {
+      "en": "Anglais",
+      "es": "Espagnol",
+      "fr": "Français"
+    },
+    "settings": "Paramètres",
+    "unable-to-update": "Impossible de mettre à jour les paramètres.",
+    "update-success": "Paramètres mis à jour."
+  },
+  "terms-and-conditions": "Terms and conditions",
+  "version": "Version"
+}

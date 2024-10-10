@@ -1,4 +1,5 @@
 import { IonCol, IonContent, IonGrid, IonPage, IonRow } from '@ionic/react';
+import { useTranslation } from 'react-i18next';
 
 import { PropsWithTestId } from 'common/components/types';
 import Header from 'common/components/Header/Header';
@@ -15,16 +16,22 @@ import BuildDiagnostics from './BuildDiagnostics';
  * @returns {JSX.Element} JSX
  */
 const DiagnosticsPage = ({ testid = 'page-diagnostics' }: PropsWithTestId): JSX.Element => {
+  const { t } = useTranslation();
+
   return (
     <IonPage className="ls-diagnostics-page" data-testid={testid}>
-      <Header title="Diagnostics" backButton defaultHref="/tabs/account" />
+      <Header
+        title={t('diagnostics.diagnostics', { ns: 'account' })}
+        backButton
+        defaultHref="/tabs/account"
+      />
 
       <IonContent>
         <IonGrid fixed>
           <IonRow className="ion-margin-top ion-hide-md-down">
             <IonCol>
               <PageHeader border inset>
-                Diagnostics
+                {t('diagnostics.diagnostics', { ns: 'account' })}
               </PageHeader>
             </IonCol>
           </IonRow>

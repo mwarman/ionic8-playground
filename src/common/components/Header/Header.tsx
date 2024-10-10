@@ -9,6 +9,7 @@ import {
   IonTitle,
   IonToolbar,
 } from '@ionic/react';
+import { useTranslation } from 'react-i18next';
 
 import './Header.scss';
 import { PropsWithTestId } from '../types';
@@ -50,6 +51,7 @@ const Header = ({
 }: HeaderProps): JSX.Element => {
   const { isAuthenticated } = useAuth();
   const { isActive: isActiveProgressBar, progressBar } = useProgress();
+  const { t } = useTranslation();
 
   return (
     <IonHeader className="ls-header" data-testid="header-app">
@@ -75,8 +77,8 @@ const Header = ({
         >
           {isAuthenticated && (
             <>
-              <IonButton routerLink="/tabs/home">Home</IonButton>
-              <IonButton routerLink="/tabs/users">Users</IonButton>
+              <IonButton routerLink="/tabs/home">{t('navigation.home')}</IonButton>
+              <IonButton routerLink="/tabs/users">{t('navigation.users')}</IonButton>
             </>
           )}
         </IonButtons>

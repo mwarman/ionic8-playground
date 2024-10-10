@@ -1,5 +1,6 @@
 import { IonCol, IonGrid, IonRow } from '@ionic/react';
 import classNames from 'classnames';
+import { useTranslation } from 'react-i18next';
 
 import './UserDetail.scss';
 import { BaseComponentProps } from 'common/components/types';
@@ -36,6 +37,7 @@ const UserDetail = ({
   testid = 'user-detail',
   userId,
 }: UserDetailProps): JSX.Element => {
+  const { t } = useTranslation();
   const { data: user, isError, isLoading } = useGetUser({ userId });
 
   const baseProps = {
@@ -48,7 +50,7 @@ const UserDetail = ({
     return (
       <div {...baseProps}>
         <CardRow testid={`${testid}-error`}>
-          <ErrorCard content="We are experiencing problems getting the requested user information." />
+          <ErrorCard content={t('unable-to-retrieve', { ns: 'user' })} />
         </CardRow>
       </div>
     );

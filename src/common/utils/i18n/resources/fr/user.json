@@ -1,0 +1,26 @@
+{
+  "address": "Adresse",
+  "add-user": "Ajouter un utilisateur",
+  "browse-and-search": "Parcourez et recherchez tous les utilisateurs. Affichez les profils des utilisateurs et lisez leurs publications.",
+  "company": "Entreprise",
+  "contact": "Contact",
+  "delete": {
+    "deleting": "Suppression...",
+    "in-progress": "Suppression {{name}} en cours.",
+    "warning": "La suppression de {{name}} est permanente."
+  },
+  "delete-user": "Supprimer l'utilisateur",
+  "edit-user": "Modifier l'utilisateur",
+  "label": {
+    "email": "Adresse email",
+    "name": "Nom",
+    "phone": "Numéro de téléphone",
+    "username": "Nom d'utilisateur",
+    "website": "Site web"
+  },
+  "loading-users": "Chargement des utilisateurs",
+  "tap-to-view": "Appuyez pour afficher tous les utilisateurs.",
+  "unable-to-find": "Nous ne parvenons pas à trouver d'informations correspondant à votre demande.",
+  "unable-to-process": "Nous rencontrons des problèmes lors du traitement de votre demande.",
+  "unable-to-retrieve": "Nous ne sommes pas en mesure de récupérer les informations demandées pour le moment."
+}

@@ -1,0 +1,26 @@
+{
+  "address": "Address",
+  "add-user": "Add user",
+  "browse-and-search": "Browse and search all the users. View user profiles and read their posts.",
+  "company": "Company",
+  "contact": "Contact",
+  "delete": {
+    "deleting": "Deleting...",
+    "in-progress": "Deleting {{name}} in progress.",
+    "warning": "Deleting {{name}} is permanent."
+  },
+  "delete-user": "Delete user",
+  "edit-user": "Edit user",
+  "label": {
+    "email": "Email",
+    "name": "Name",
+    "phone": "Phone",
+    "username": "Username",
+    "website": "Website"
+  },
+  "loading-users": "Loading users",
+  "tap-to-view": "Tap to view all users.",
+  "unable-to-find": "We are unable to find information matching your request.",
+  "unable-to-process": "We are experiencing problems processing your request.",
+  "unable-to-retrieve": "We are unable to retrieve the requested information at this time."
+}

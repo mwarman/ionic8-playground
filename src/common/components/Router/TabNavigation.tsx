@@ -1,5 +1,6 @@
 import { IonLabel, IonRouterOutlet, IonTabBar, IonTabButton, IonTabs } from '@ionic/react';
 import { Redirect, Route } from 'react-router';
+import { useTranslation } from 'react-i18next';
 
 import './TabNavigation.scss';
 import AppMenu from '../Menu/AppMenu';
@@ -28,6 +29,8 @@ import DiagnosticsPage from 'pages/Account/components/Diagnostics/DiagnosticsPag
  * @see {@link AppMenu}
  */
 const TabNavigation = (): JSX.Element => {
+  const { t } = useTranslation();
+
   return (
     <>
       <AppMenu />
@@ -69,7 +72,7 @@ const TabNavigation = (): JSX.Element => {
               size="xl"
               fixedWidth
             />
-            <IonLabel>Home</IonLabel>
+            <IonLabel>{t('navigation.home')}</IonLabel>
           </IonTabButton>
           <IonTabButton className="ls-tab-navigation__bar-button" tab="users" href="/tabs/users">
             <Icon
@@ -78,7 +81,7 @@ const TabNavigation = (): JSX.Element => {
               size="xl"
               fixedWidth
             />
-            <IonLabel>Users</IonLabel>
+            <IonLabel>{t('navigation.users')}</IonLabel>
           </IonTabButton>
           <IonTabButton
             className="ls-tab-navigation__bar-button"
@@ -91,7 +94,7 @@ const TabNavigation = (): JSX.Element => {
               size="xl"
               fixedWidth
             />
-            <IonLabel>Account</IonLabel>
+            <IonLabel>{t('navigation.account')}</IonLabel>
           </IonTabButton>
         </IonTabBar>
       </IonTabs>

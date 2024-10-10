@@ -77,4 +77,18 @@
   .break-keep {
     word-break: keep-all;
   }
+
+  // text transform
+  .capitalize {
+    text-transform: capitalize;
+  }
+  .lowercase {
+    text-transform: lowercase;
+  }
+  .uppercase {
+    text-transform: uppercase;
+  }
+  .normal-case {
+    text-transform: none;
+  }
 }

@@ -1,0 +1,10 @@
+{
+  "welcome": {
+    "sentence1": "Bienvenue au projet d'expérimentation Ionic.",
+    "sentence2": {
+      "1": "Ce projet montre comment créer une application multiplateforme à l'aide de",
+      "2": "cadre et",
+      "3": "composants"
+    }
+  }
+}

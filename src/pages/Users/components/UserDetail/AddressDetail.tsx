@@ -1,4 +1,5 @@
 import classNames from 'classnames';
+import { useTranslation } from 'react-i18next';
 
 import { Address } from 'common/models/user';
 import { BaseComponentProps } from 'common/components/types';
@@ -40,6 +41,8 @@ const AddressDetail = ({
   isLoading = false,
   testid = 'address-detail',
 }: AddressDetailProps): JSX.Element | false => {
+  const { t } = useTranslation();
+
   if (isLoading) {
     // loading state
     return (
@@ -67,7 +70,7 @@ const AddressDetail = ({
       <div className={classNames('ls-address-detail', className)} data-testid={testid}>
         <HeaderRow border>
           <Icon icon={IconName.MapLocationDot} />
-          <div>Address</div>
+          <div>{t('address', { ns: 'user' })}</div>
         </HeaderRow>
         <div className="ls-address-detail__content">
           <div>{address.street}</div>
