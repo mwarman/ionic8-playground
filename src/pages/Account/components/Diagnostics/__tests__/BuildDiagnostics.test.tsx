@@ -24,6 +24,7 @@ describe('BuildDiagnostics', () => {
     expect(screen.getByTestId('build-env')).toHaveTextContent('test');
     expect(screen.getByTestId('build-time')).toHaveTextContent('1970-01-01 00:00:00 +00:00');
     expect(screen.getByTestId('build-sha')).toHaveTextContent('test');
+    expect(screen.getByTestId('build-runner')).toHaveTextContent('test');
     expect(screen.getByTestId('build-workflow')).toHaveTextContent('test 1.1');
   });
 });

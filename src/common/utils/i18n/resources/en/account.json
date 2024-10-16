@@ -11,6 +11,7 @@
       "name": "Name",
       "native": "Native",
       "platforms": "Platforms",
+      "runner": "Runner",
       "sha": "SHA",
       "time": "Time",
       "version": "Version",

@@ -52,6 +52,7 @@ jobs:
           echo "VITE_BUILD_TS=$(date +'%Y-%m-%dT%H:%M:%S%z')" >> .env
           echo "VITE_BUILD_COMMIT_SHA=${{ github.sha }}" >> .env
           echo "VITE_BUILD_ENV_CODE=${{ env.AWS_ENV_CODE }}" >> .env
+          echo "VITE_BUILD_WORKFLOW_RUNNER=GitHub Actions" >> .env
           echo "VITE_BUILD_WORKFLOW_NAME=${{ github.workflow }}" >> .env
           echo "VITE_BUILD_WORKFLOW_RUN_NUMBER=${{ github.run_number }}" >> .env
           echo "VITE_BUILD_WORKFLOW_RUN_ATTEMPT=${{ github.run_attempt }}" >> .env

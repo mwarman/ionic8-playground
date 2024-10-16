@@ -11,6 +11,7 @@
       "name": "Nom",
       "native": "Natal",
       "platforms": "Plateformes",
+      "runner": "Coureur",
       "sha": "SHA",
       "time": "Temps",
       "version": "Version",
